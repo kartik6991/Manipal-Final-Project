@@ -1,9 +1,19 @@
 package com.example.demo.service;
 
+import java.util.List;
+
+import com.example.demo.entities.Cart;
+import com.example.demo.entities.Mobile;
+import com.example.demo.exception.MobileException;
+
 public interface ICartService {
-	public Mobile addMobileItems(List<Mobile> mobiles);
-	public Mobile deleteMobileItems(int mobileId) throws MobileNotFoundException;
-	public Mobile updateMobileItemquantity(int mobileId);
-	public List<Mobile> showAllMobileItems(int cartId);
-	public int placeOrder(Cart cart);
+//	public Cart addMobileItems(List<Mobile> mobiles);
+
+	public String deleteMobileItems(Integer Id) throws MobileException;
+
+	public Cart updateMobileItemquantity(Integer Id);
+
+	public List<Mobile> showAllMobileItems(Integer cartId);
+
+	public Integer placeOrder(Cart cart);
 }

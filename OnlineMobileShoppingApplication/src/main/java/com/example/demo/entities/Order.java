@@ -3,22 +3,29 @@ package com.example.demo.entities;
 import java.time.LocalDate;
 import java.util.List;
 
+import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.Document;
+
+@Document
 public class Order {
-	private int orderId;
+	@Id
+	private Integer orderId;
 	private List<Mobile> mobile;
 	private LocalDate orderDate;
 	private LocalDate dispatchDate;
-	private int quantity;
-	private int cost;
-	private int totalCost;
-	private Customer customer;
+	private Integer quantity;
+	private Integer cost;
+	private Integer totalCost;
 	private String status;
+	private Payment payment;
+
 	public Order() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-	public Order(int orderId, List<Mobile> mobile, LocalDate orderDate, LocalDate dispatchDate, int quantity, int cost,
-			int totalCost, Customer customer, String status) {
+
+	public Order(Integer orderId, List<Mobile> mobile, LocalDate orderDate, LocalDate dispatchDate, Integer quantity,
+			Integer cost, Integer totalCost, String status) {
 		super();
 		this.orderId = orderId;
 		this.mobile = mobile;
@@ -27,62 +34,70 @@ public class Order {
 		this.quantity = quantity;
 		this.cost = cost;
 		this.totalCost = totalCost;
-		this.customer = customer;
 		this.status = status;
 	}
-	public int getOrderId() {
+
+	public Integer getOrderId() {
 		return orderId;
 	}
-	public void setOrderId(int orderId) {
+
+	public void setOrderId(Integer orderId) {
 		this.orderId = orderId;
 	}
+
 	public List<Mobile> getMobile() {
 		return mobile;
 	}
+
 	public void setMobile(List<Mobile> mobile) {
 		this.mobile = mobile;
 	}
+
 	public LocalDate getOrderDate() {
 		return orderDate;
 	}
+
 	public void setOrderDate(LocalDate orderDate) {
 		this.orderDate = orderDate;
 	}
+
 	public LocalDate getDispatchDate() {
 		return dispatchDate;
 	}
+
 	public void setDispatchDate(LocalDate dispatchDate) {
 		this.dispatchDate = dispatchDate;
 	}
-	public int getQuantity() {
+
+	public Integer getQuantity() {
 		return quantity;
 	}
-	public void setQuantity(int quantity) {
+
+	public void setQuantity(Integer quantity) {
 		this.quantity = quantity;
 	}
-	public int getCost() {
+
+	public Integer getCost() {
 		return cost;
 	}
-	public void setCost(int cost) {
+
+	public void setCost(Integer cost) {
 		this.cost = cost;
 	}
-	public int getTotalCost() {
+
+	public Integer getTotalCost() {
 		return totalCost;
 	}
-	public void setTotalCost(int totalCost) {
+
+	public void setTotalCost(Integer totalCost) {
 		this.totalCost = totalCost;
 	}
-	public Customer getCustomer() {
-		return customer;
-	}
-	public void setCustomer(Customer customer) {
-		this.customer = customer;
-	}
+
 	public String getStatus() {
 		return status;
 	}
+
 	public void setStatus(String status) {
 		this.status = status;
 	}
-	
 }

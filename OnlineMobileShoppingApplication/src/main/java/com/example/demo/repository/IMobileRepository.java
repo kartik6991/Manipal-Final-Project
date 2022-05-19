@@ -1,10 +1,8 @@
 package com.example.demo.repository;
 
-public interface IMobileRepository {
+import org.springframework.data.mongodb.repository.MongoRepository;
 
-	public Mobile addMobile(Mobile mobile);
-	public Mobile updateMedicine(Mobile mobile) throws MobileNotFoundException;
-	public Mobile deleteMedicine(int id) throws MobileNotFoundException;
-	public List<Mobile> showAllMobile();
-	public Mobile showMobileById(int mobileId);
+import com.example.demo.entities.Mobile;
+
+public interface IMobileRepository extends MongoRepository<Mobile, Integer> {
 }

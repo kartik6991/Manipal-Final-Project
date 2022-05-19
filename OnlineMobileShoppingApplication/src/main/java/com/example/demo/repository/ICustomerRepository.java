@@ -1,8 +1,8 @@
 package com.example.demo.repository;
 
-public interface ICustomerRepository {
-	public Customer addCustomer(Customer Customer);
-	public Customer updateCustomer(Customer Customer) throws CustomerNotFoundException;
-	public Customer cancelCustomer(int Customerid) throws CustomerNotFoundException;
-	public List<Customer> showAllCustomers(int cid);
+import org.springframework.data.mongodb.repository.MongoRepository;
+
+import com.example.demo.entities.Customer;
+
+public interface ICustomerRepository extends MongoRepository<Customer, Integer> {
 }
