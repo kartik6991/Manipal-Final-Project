@@ -1,0 +1,25 @@
+package com.example.demo.entities;
+
+public class CartDTO {
+	private Integer cart_Id;
+	private Integer mobileId;
+	public CartDTO() {
+		super();
+	}
+	public CartDTO(Integer cart_Id,Integer mobileId) {
+		super();
+		this.cart_Id = cart_Id;
+	}
+	public Integer getCart_Id() {
+		return cart_Id;
+	}
+	public void setCart_Id(Integer cart_Id) {
+		this.cart_Id = cart_Id;
+	}
+	public Integer getMobileId() {
+		return mobileId;
+	}
+	public void setMobileId(Integer mobileId) {
+		this.mobileId = mobileId;
+	}
+}

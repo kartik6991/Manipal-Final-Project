@@ -1,0 +1,20 @@
+package com.example.demo.service;
+
+import java.util.List;
+
+import com.example.demo.entities.Feedback;
+import com.example.demo.exception.FeedbackException;
+
+public interface IFeedbackService {
+
+//	public Feedback addFeedback(Feedback Feedback) throws FeedbackException;
+//
+//	public String cancelFeedback(Long feedbackID)throws FeedbackException;
+
+	public Feedback updateFeedback(Feedback feedback)throws FeedbackException;
+	
+	public Feedback getFeedbackByid(Long feedbackId)throws FeedbackException;
+	
+	public List<Feedback> showAllFeedbacks()throws FeedbackException;
+	
+}

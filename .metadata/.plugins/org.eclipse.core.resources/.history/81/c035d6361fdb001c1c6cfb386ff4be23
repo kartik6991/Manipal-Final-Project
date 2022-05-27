@@ -1,0 +1,102 @@
+package com.example.demo.service;
+
+import java.util.List;
+import java.util.Optional;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.example.demo.entities.AddtoCartDTO;
+import com.example.demo.entities.Cart;
+//import com.example.demo.entities.CartDTO;
+//import com.example.demo.entities.CountOfMobiles;
+import com.example.demo.entities.Mobile;
+import com.example.demo.exception.CartException;
+import com.example.demo.exception.MobileException;
+import com.example.demo.repository.ICartRepository;
+import com.example.demo.repository.ICustomerRepository;
+import com.example.demo.repository.IMobileRepository;
+
+@Service
+public class CartServiceImpl implements ICartService {
+	@Autowired
+	private ICartRepository cartRepo;
+	@Autowired
+	private IMobileRepository mobileRepo;
+	@Autowired
+	private ICustomerRepository customerRepo;
+//	@Override
+//	public String deleteCart(Integer id) throws CartException {
+//		this.cartRepo.deleteById(id);
+//		return "Deleted mobile items in the cart";
+//	}
+
+	@Override
+	public List<Cart> showAllCarts() {
+		return cartRepo.findAll();
+	}
+
+//	@Override
+//	public Cart addCart(Cart cart) throws CartException {
+//		Optional<Cart> newCart = this.cartRepo.findById(cart.getCartId());
+//		if (newCart.isPresent())
+//			throw new CartException("Already cart added");
+//		return this.cartRepo.save(cart);
+//	}
+
+	@Override
+	public Cart updateCart(Cart cart) {
+		return this.cartRepo.save(cart);
+	}
+//
+//	@Override
+//	public Cart showCartById(Integer id) throws CartException{
+//		Optional<Cart> cartOptional = this.cartRepo.findById(id);
+//		if (cartOptional.isEmpty())
+//			throw new CartException("Cart Id doesn't exist");
+//		return cartOptional.get();
+//	}
+	
+//	@Override
+//	public Cart addMobileItems(Mobile mobile,CartDTO cartDTO) throws CartException{
+//		Optional<Cart>cartOpt=this.cartRepo.findById(cartDTO.getCart_Id());
+//		if(cartOpt.isEmpty())
+//			throw new CartException("Cart Id doesn't exist");
+//		Cart cart=cartOpt.get();
+//		cart.getMobiles().add(mobile);
+////		this.mobileRepo.insert(mobile);
+//		return this.cartRepo.save(cart);
+//	}
+
+//	@Override
+//	public int placeOrder(CountOfMobiles countMobile) throws CartException {
+//		Optional<Cart>cartOpt=this.cartRepo.findById(countMobile.getCartId());
+//		if(cartOpt.isEmpty())
+//			throw new CartException("Cart id doesn't exist");
+//		Cart cart=cartOpt.get();
+//		Integer count=cart.getMobiles().size();
+//		return count;
+//	}
+	
+	@Override
+	public Cart addMobileToCart(AddtoCartDTO cartDTO) {
+
+		Optional<Customer> employeeOpt = this.customerRepo.findById(cartDTO.getCustomerId());
+		Employee emp = employeeOpt.get();
+		Optional<Mobile> mobileOpt = this.mobileDAO.findById(cartDTO.getMobileId());
+		Mobile mob = mobileOpt.get();
+
+		if (emp.getCart() == null) {
+			Cart cart = new Cart();
+			cart.getMobiles().add(mob);
+			emp.setCart(cart);
+
+		} else {
+			emp.getCart().getMobiles().add(mob);
+
+		}
+		emp = this.employeeDAO.save(emp);
+
+		return emp.getCart();
+	}
+}

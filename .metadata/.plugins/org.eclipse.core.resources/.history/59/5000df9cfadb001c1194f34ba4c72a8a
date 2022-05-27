@@ -1,0 +1,27 @@
+package com.example.demo.entities;
+
+public class AddtoCartDTO {
+	private String customerId;
+	private String mobileId;
+	public AddtoCartDTO() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+	public AddtoCartDTO(String customerId, String mobileId) {
+		super();
+		this.customerId = customerId;
+		this.mobileId = mobileId;
+	}
+	public String getCustomerId() {
+		return customerId;
+	}
+	public void setCustomerId(String customerId) {
+		this.customerId = customerId;
+	}
+	public Integer getMobileId() {
+		return mobileId;
+	}
+	public void setMobileId(Integer mobileId) {
+		this.mobileId = mobileId;
+	}
+}

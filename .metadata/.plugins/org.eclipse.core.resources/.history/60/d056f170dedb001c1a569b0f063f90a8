@@ -1,0 +1,14 @@
+package com.example.demo.repository;
+
+import java.util.Optional;
+
+import org.springframework.data.mongodb.repository.MongoRepository;
+
+import com.example.demo.entities.Feedback;
+
+public interface IFeedbackRepository extends MongoRepository<Feedback, Long> {
+
+	Optional<Feedback> findById(Long long1);
+
+	String save(String feedback);
+}

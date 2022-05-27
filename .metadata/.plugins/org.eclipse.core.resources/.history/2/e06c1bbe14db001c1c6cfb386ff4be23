@@ -1,0 +1,24 @@
+package com.example.demo.entities;
+
+public class CountOfMobiles {
+	Integer cartId;
+
+	public CountOfMobiles() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
+	public CountOfMobiles(Integer cartId) {
+		super();
+		this.cartId = cartId;
+	}
+
+	public Integer getCartId() {
+		return cartId;
+	}
+
+	public void setCartId(Integer cartId) {
+		this.cartId = cartId;
+	}
+	
+}

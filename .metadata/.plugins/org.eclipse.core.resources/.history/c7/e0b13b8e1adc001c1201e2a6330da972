@@ -1,0 +1,21 @@
+package com.example.demo.service;
+
+import java.util.List;
+
+import com.example.demo.entities.AddCardToPaymentDTO;
+import com.example.demo.entities.Payment;
+import com.example.demo.exception.PaymentException;
+
+public interface IPaymentService {
+	Payment addPayment(Payment payment) throws PaymentException;
+
+	Payment updatePayment(Payment payment) throws PaymentException;
+
+	public String deletePayment(String id) throws PaymentException;
+
+	public List<Payment> showAllPayments();
+
+	public Payment showPaymentById(String id) throws PaymentException;
+
+	Payment addCardToPayment(AddCardToPaymentDTO addCardDTO) throws PaymentException, CardException;
+}

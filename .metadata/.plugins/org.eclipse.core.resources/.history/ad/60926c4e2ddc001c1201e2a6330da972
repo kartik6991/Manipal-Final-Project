@@ -1,0 +1,36 @@
+package com.example.demo.controller;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.example.demo.entities.AddtoCartDTO;
+import com.example.demo.entities.Cart;
+//import com.example.demo.entities.CartDTO;
+//import com.example.demo.entities.CountOfMobiles;
+import com.example.demo.entities.Mobile;
+import com.example.demo.exception.CartException;
+import com.example.demo.exception.CustomerException;
+import com.example.demo.exception.MobileException;
+import com.example.demo.service.ICartService;
+
+@RestController
+@RequestMapping("api")
+
+public class CartController {
+	@Autowired
+	private ICartService cartService;
+	
+	@PostMapping("addtoCart")
+	public Cart addToCart(@RequestBody AddtoCartDTO cartDTO) throws CustomerException{
+		return this.cartService.addMobileToCart(cartDTO);
+	}
+}

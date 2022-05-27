@@ -1,0 +1,23 @@
+package com.example.demo.service;
+
+import java.util.List;
+
+import com.example.demo.entities.AddRatingToMobileDTO;
+import com.example.demo.entities.Rating;
+import com.example.demo.exception.MobileException;
+import com.example.demo.exception.RatingException;
+
+public interface IRatingService {
+
+	public Rating addRating(Rating rating) throws RatingException;
+
+	public String cancelRating(String ratingID) throws RatingException;
+
+	public Rating updateRating(Rating rating) throws RatingException;
+	
+	public Rating getRatingByid(String ratingId) throws RatingException;
+	
+	public List<Rating> showAllRatings();
+
+	Rating addRatingToMobile(AddRatingToMobileDTO addRatingDTO) throws MobileException, RatingException;
+}

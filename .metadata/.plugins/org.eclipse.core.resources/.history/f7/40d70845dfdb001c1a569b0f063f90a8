@@ -1,0 +1,42 @@
+package com.example.demo.entities;
+
+import javax.validation.constraints.Max;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Pattern;
+import javax.validation.constraints.Size;
+
+import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.Document;
+
+
+@Document
+public class Rating {
+	@Id
+	private String ratingID;
+	private String ratingFeedback;
+	
+	public Rating() {
+		super();
+	}
+	
+	public Rating(String ratingID, String ratingFeedback) {
+		super();
+		this.ratingID = ratingID;
+		this.ratingFeedback = ratingFeedback;
+	}
+
+	public Integer getRatingID() {
+		return ratingID;
+	}
+	public void setRatingID(Integer ratingID) {
+		this.ratingID = ratingID;
+	}
+	public Integer getRatingFeedback() {
+		return ratingFeedback;
+	}
+	public void setRatingFeedback(Integer ratingFeedback) {
+		this.ratingFeedback = ratingFeedback;
+	}
+}
+	

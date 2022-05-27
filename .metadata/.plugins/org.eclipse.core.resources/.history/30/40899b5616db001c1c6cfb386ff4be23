@@ -1,0 +1,27 @@
+package com.example.demo.service;
+
+import java.util.List;
+
+import com.example.demo.entities.Cart;
+//import com.example.demo.entities.CartDTO;
+//import com.example.demo.entities.CountOfMobiles;
+//import com.example.demo.entities.Mobile;
+//import com.example.demo.exception.CartException;
+//import com.example.demo.exception.MobileException;
+
+public interface ICartService {
+	
+	String deleteCart(Integer id) throws CartException;
+
+	List<Cart> showAllCarts();
+
+	Cart addCart(Cart cart) throws CartException;
+
+	Cart updateCart(Cart cart);
+
+//	Cart showCartById(Integer id) throws CartException;
+
+//	Cart addMobileItems(Mobile mobile, CartDTO cartDTO) throws CartException, MobileException;
+	
+//	public int placeOrder(CountOfMobiles countMobile) throws CartException;
+}

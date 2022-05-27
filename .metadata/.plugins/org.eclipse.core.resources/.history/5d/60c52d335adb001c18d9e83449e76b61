@@ -1,0 +1,24 @@
+package com.example.demo.entities;
+
+public class AddToOrder {
+	private String customerId;
+
+	public AddToOrder() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
+	public AddToOrder(String customerId) {
+		super();
+		this.customerId = customerId;
+	}
+
+	public String getCustomerId() {
+		return customerId;
+	}
+
+	public void setCustomerId(String customerId) {
+		this.customerId = customerId;
+	}
+	
+}

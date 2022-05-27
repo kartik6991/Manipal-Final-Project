@@ -1,0 +1,85 @@
+package com.example.demo.service;
+
+import java.util.List;
+import java.util.Optional;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.example.demo.entities.AddRatingToMobileDTO;
+import com.example.demo.entities.Mobile;
+import com.example.demo.entities.Rating;
+import com.example.demo.exception.MobileException;
+import com.example.demo.exception.RatingException;
+import com.example.demo.repository.IMobileRepository;
+import com.example.demo.repository.IRatingRepository;
+
+@Service
+public class MobileServiceImpl implements IMobileService {
+	@Autowired
+	private IMobileRepository mobileRepo;
+	@Autowired
+	private IRatingRepository ratingRepo;
+
+	@Override
+	public Mobile addMobile(Mobile mobile) throws MobileException {
+		Optional<Mobile> newMobile = this.mobileRepo.findById(mobile.getMobileId());
+		if (newMobile.isPresent())
+			throw new MobileException("Already mobile added");
+		return this.mobileRepo.save(mobile);
+	}
+
+	@Override
+	public Mobile updateMobile(Mobile mobile) throws MobileException {
+		return this.mobileRepo.save(mobile);
+	}
+
+	@Override
+	public String deleteMobile(String id) throws MobileException {
+		this.mobileRepo.deleteById(id);
+		return "Mobile deleted successfully";
+	}
+
+	@Override
+	public List<Mobile> showAllMobile() {
+		return mobileRepo.findAll();
+	}
+
+	@Override
+	public Mobile showMobileById(String mobileId) throws MobileException {
+		Optional<Mobile> mobileOptional = this.mobileRepo.findById(mobileId);
+		if (mobileOptional.isEmpty())
+			throw new MobileException("Mobile Id doesn't exist");
+		return mobileOptional.get();
+	}
+	
+	@Override
+	public Mobile addRatingToMobile(AddRatingToMobileDTO addRatingDTO)throws MobileException, RatingException{
+		Optional<Rating>ratingOpt=this.ratingRepo.findById(addRatingDTO.getRatingId());
+		if (ratingOpt.isEmpty())
+			throw new RatingException("Rating Id doesn't exist");
+		Rating rating=ratingOpt.get();
+		Optional<Mobile>mobileOpt=this.mobileRepo.findById(addRatingDTO.getMobileId());
+		if (mobileOpt.isEmpty())
+			throw new MobileException("Mobile Id doesn't exist");
+		Mobile mobile=mobileOpt.get();
+		if(mobile.getRating()==null)
+			mobile.setRating(rating);
+		return this.mobileRepo.save(mobile);
+	}
+	
+	@Override
+	public Mobile addFeedbackToMobile(AddFeedbackToMobileDTO addFeedbackDTO)throws MobileException, FeedbackException{
+		Optional<Feedback>feedbackOpt=this.ratingRepo.findById(addFeedbackDTO.getRatingId());
+		if (feedbackOpt.isEmpty())
+			throw new FeedbackException("Feedback Id doesn't exist");
+		Rating rating=ratingOpt.get();
+		Optional<Mobile>mobileOpt=this.mobileRepo.findById(addFeedbackDTO.getMobileId());
+		if (mobileOpt.isEmpty())
+			throw new MobileException("Mobile Id doesn't exist");
+		Mobile mobile=mobileOpt.get();
+		if(mobile.getRating()==null)
+			mobile.setRating(rating);
+		return this.mobileRepo.save(mobile);
+	}
+}
