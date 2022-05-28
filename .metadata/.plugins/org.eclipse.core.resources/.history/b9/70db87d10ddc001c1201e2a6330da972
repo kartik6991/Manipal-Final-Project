@@ -1,5 +1,0 @@
-package com.example.demo.controller;
-
-public class Category {
-	String categoryType;
-	List<Mobile>}

@@ -1,5 +1,0 @@
-package com.example.demo.entities;
-
-public class AddToOrder {
-	List<Mobile>mobiles=new ArrayList<Mobile>();
-}
